@@ -1,0 +1,131 @@
+<!-- <swiper [navigation]="true" class="mySwiper">
+          <ng-template swiperSlide>Slide 1</ng-template
+          ><ng-template swiperSlide>Slide 2</ng-template
+          ><ng-template swiperSlide>Slide 3</ng-template
+          ><ng-template swiperSlide>Slide 4</ng-template
+          ><ng-template swiperSlide>Slide 5</ng-template
+          ><ng-template swiperSlide>Slide 6</ng-template
+          ><ng-template swiperSlide>Slide 7</ng-template
+          ><ng-template swiperSlide>Slide 8</ng-template
+          ><ng-template swiperSlide>Slide 9</ng-template>
+        </swiper> -->
+
+
+<div class="flex">
+
+
+  <div class="container" >
+
+    <carousel  mat-card-image style="z-index: 0 !important; margin: 0.001px !important;" *ngIf="feed.photo.length!=1"
+    [images]="feed.photo"
+    [objectFit]="'cover'"
+    [cellWidth]="'100%'"
+    [height]="620"
+    [width]="580"
+    [autoplay]="true"
+    [dots]="false"
+    [loop]="true"
+    [counter]="true"
+    [cellsToShow]="1">
+  </carousel>
+     <img class="images" *ngIf="feed.photo.length==1" src={{imgBaseUrl+feed.photo[0].filename}} height="600" 
+      width="560" alt=""> 
+    <!-- <img class="images" *ngIf="!(feed.photo.length)" src={{imageUrl}} height="600" width="560" alt=""> -->
+    <!-- <button *ngIf="temp!=feed.photo.length-1" class="btnRight" (click)="inc()"><img src="../../assets/images/next.png"
+        style="max-height: 12px; max-width: 12px;" alt=""></button>
+    <button *ngIf="temp!=0" class="btnLeft" (click)="dec()"><img src="../../assets/images/back.png"
+        style="max-height: 12px; max-width: 12px;" alt=""></button> -->
+    <!-- <button  [disabled]= "!feed.photo.length" class="material-icons round"  style="color: red;" (click)="del()">delete</button>  -->
+  </div>
+  <mat-card class="example-card">
+
+
+
+    <div class="flex" style="padding:5px 0 5px 0 ;">
+      <ngx-avatar  name="{{feed?._createdBy.name}}" src="{{imgBaseUrl+feed?._createdBy?.photo}}" size="45"></ngx-avatar>
+      <div>
+        <div style="display: flex;">
+        <h5 style="width:230px ;font-size: 16px; padding: 3px 10px 0px 0px; margin: 0 10px;  ">{{feed?._createdBy.name}}</h5>
+        <h5 style="font-size: 13px; padding: 3px 10px 0px 0px; margin: 0;">{{calculateDiff(feed?.createdAt)}}</h5>
+      
+      </div>
+        <h6 class="light" style="font-size: 13px; margin: 0 ; padding: 3px 10px 0px 10px;">{{feed?.location?.substring(0,45)}}...</h6>
+
+        <h6 style="font-size: 15px; padding-top: 12px; padding-left: 10px;">{{feed.caption}}...</h6>
+      </div>
+    </div>
+    <div class="comments">
+      <div *ngFor="let fe of feed.comment; index as i; ">
+      <div class="flex"  style="padding: 3% 0%;">
+        <ngx-avatar (click)="replyComment(fe)" name="{{fe._userId.name}}" src="{{imgBaseUrl+fe._userId?.photo}}" size="40"></ngx-avatar>
+        <div (click)="replyComment(fe)">
+          <h5  style="width:260px; max-width:260px;  font-size: 14px; padding: 3px 10px 0px 0px; margin: 0 10px ;">
+            {{fe._userId.firstName}} <span class="light" style="padding-left: 6px;">{{fe.comment}}...</span></h5>
+          <h6 class="light" style="font-size: 13px; margin: 0 ; padding: 0 10px;">{{calculateDiff(fe.date)}} <span style=" font-size: 14px; font-weight: bold; padding-left: 10px; cursor: pointer;" (click)="showReply(feed,fe)">Reply</span></h6>
+        </div>
+        <span *ngIf="likeComentnow(fe)" style="color: red; cursor: pointer; font-size: 20px;" (click)="likeComment(feed,fe)" class="material-icons-outlined">favorite</span>
+        <span *ngIf="!likeComentnow(fe)"  style=" cursor: pointer; font-size: 20px;" (click)="likeComment(feed,fe)" class="material-icons-outlined light">favorite_outline</span>
+      </div>
+      <ng-container *ngIf="showReplyNow(fe)">
+      <div class="reply flex" *ngFor="let f of fe.reply; index as i; "  style="padding: 1% 2% 1% 10%;">
+      
+       
+          <ngx-avatar name="{{f._userId.name}}" src="{{imgBaseUrl+f._userId?.photo}}" size="40"></ngx-avatar>
+          <div>
+            <h5 style="width:223px; max-width:223px;  font-size: 14px; padding: 3px 10px 0px 0px; margin: 0 10px ;">
+              {{f._userId.firstName}} <span class="light" style="padding-left: 6px;">{{f.comment}}...</span></h5>
+              <h6 class="light" style="font-size: 13px; margin: 0 ; padding: 0 10px;">{{calculateDiff(f.date)}} </h6>
+            </div>
+
+            <span *ngIf="likeReplynow(f)" style="color: red; cursor: pointer; font-size: 20px; " (click)="likeReply(feed,fe,f)" class="material-icons-outlined">favorite</span>
+            <span *ngIf="!likeReplynow(f)"  style=" cursor: pointer; font-size: 20px;" (click)="likeReply(feed,fe,f)" class="material-icons-outlined light">favorite_outline</span>
+
+      </div>
+    </ng-container>
+
+    </div>
+    </div>
+<div class="flex" >
+   <div style="cursor: pointer;">
+     <span *ngIf="!likenow()" (click)="likePost()" class="material-icons-outlined">favorite_outline</span>
+    <span *ngIf="likenow()" style="color: red;" (click)="likePost()" class="material-icons-outlined">favorite</span>
+<h5  (click)="openDialog(feed)">{{this.feed.like.length}} like</h5>
+</div> 
+
+
+
+
+    <mat-icon *ngIf="savenow()" (click)="savePost()" class="bookmark">bookmark</mat-icon>
+    <mat-icon *ngIf="!savenow()" (click)="savePost()" class="bookmark">bookmark_border</mat-icon>
+  </div>
+    <div style="display: flex;">
+      <!-- <i (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" [emojiPickerDirection]="'top' " (emojiPickerSelect)="handleSelection($event)"><img src="../../assets/images/emoji.png" style="cursor: pointer; padding-top: 13px; max-height: 35px; max-width: 25px" alt=""> </i> -->
+      <img src="../../assets/images/emoji.png" mat-button [matMenuTriggerFor]="aboveMenu"
+        style="cursor: pointer; padding-top: 13px; max-height: 35px; max-width: 25px" alt="">
+      <input class="text" type="text" [(ngModel)]="emojiCaption" name="emojiCaption"
+        style="width: 90%; margin: 10px 5px 0px 10px; border: none; padding: 3px 5px 2px 5px; height: 30px;"
+        placeholder="Add your comment ...">
+      <button class="h3" [disabled]="emojiCaption==''" (click)="postComment(feed)"> Post</button>
+
+
+    </div>
+
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+
+      <!-- <i  (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" [emojiPickerDirection]="'top' " (emojiPickerSelect)="handleSelection($event)"></i> -->
+   
+      <emoji-mart
+      (click)="$event.stopPropagation();"
+      title="Pick your emoji…"
+      emoji="point_up"
+      (emojiClick)="handleSelection($event)"
+    ></emoji-mart>
+     </mat-menu>
+
+  </mat-card>
+</div>
+
+<div class="close">
+  <img mat-button mat-dialog-close src="../../assets/images/cancel.png" />
+
+</div>

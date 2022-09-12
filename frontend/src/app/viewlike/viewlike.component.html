@@ -1,0 +1,19 @@
+
+
+<div class="container">
+<div  style="display:flex;">
+          <h1>Likes</h1><img mat-button mat-dialog-close src="../../assets/images/cancel.png" height="15px" width="15px" />
+      </div>
+      
+        <div *ngFor="let fe of feed.like; index as i; ">
+        <div class="flex"  style="padding: 3% 0%;">
+          <ngx-avatar (click)="replyComment(fe)" name="{{fe._userId.name}}" src="{{imgBaseUrl+fe._userId?.photo}}" size="40"></ngx-avatar>
+          
+            <h5  style="width:260px; max-width:260px;  font-size: 14px; padding: 3px 10px 0px 0px; margin: 0 10px ;">
+              {{fe._userId.name+" "}}</h5>
+        
+  
+         
+        
+</div>
+</div>

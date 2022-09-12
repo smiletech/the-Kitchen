@@ -1,0 +1,88 @@
+
+<mat-toolbar class="nav" style=" overflow: hidden;">
+ 
+    <img (click)="openhome()" src="../../../assets/images/logo1.svg" height="32" alt="">
+    <span class="example-space"></span>
+    <button  (click)="openhome()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <img *ngIf="nav.url == '/'"   src="../../../assets/images/home.png/" height="20" alt="" >
+      <img  *ngIf="nav.url != '/'" src="../../../assets/images/home_holo.png" height="20" alt="">
+    </button>
+    <button (click)="openFeed()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <!-- <img src="../../../assets/images/camera.png" height="20" alt=""> -->
+      <!-- <mat-icon *ngIf="nav.url != 'http://localhost:4200/'" class="material-icons-outlined" >camera</mat-icon> -->
+      <img  *ngIf="nav.url == '/feed'"  src="../../../assets/images/camera_circle.png" height="23" alt="">
+      <img *ngIf="nav.url != '/feed'" src="../../../assets/images/camera_circle_outline.png" height="23" alt="">
+    
+      <!-- <mat-icon *ngIf="nav.url != '/feed'" class="material-icons-outlined">camera_outline</mat-icon> -->
+    
+    </button>
+    <!-- matBadge="{{this.currrntUser?.saved.length}}" -->
+    <!-- <button (click)="openSavedPost()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <img *ngIf="nav.url == '/savedPost'" src="../../../assets/images/bookmark_fill.png" height="20" alt="">
+      <img  *ngIf="nav.url != '/savedPost'" src="../../../assets/images/bookmark.png" height="18" alt="">
+     
+
+     
+    </button> -->
+    <!-- <button mat-menu-item (click)="openDialog()">
+      <img  src="../../../assets/images/list-solid.svg" height="20" alt="">
+      
+    </button> -->
+
+
+
+    <!---->
+    <button *ngIf="currrntUser.role=='user'"  (click)="scrollOrderNow()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <img  [src]="(nav.url == '/showUserOrders')?'../../../assets/images/list-solid.svg':'../../../assets/images/list-ul-solid.svg'" height="23"  alt="">
+    
+    </button>
+    <button *ngIf="currrntUser.role=='vender'" (click)="scrollDish()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <img  [src]="(nav.url == '/dish')?'../../../assets/images/list-solid.svg':'../../../assets/images/list-ul-solid.svg'" height="23"  alt="">
+    
+    </button>
+  
+    <button *ngIf="currrntUser.role=='user'" matBadge="{{order}}"(click)=" openaddToCart()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <img *ngIf="nav.url == '/addToCart'" src="../../../assets/images/shopping-cart-solid.svg" height="20" alt="">
+      <img  *ngIf="nav.url != '/addToCart'" src="../../../assets/images/cart_outline.png" height="23" alt="">
+      <!-- <span *ngIf="nav.url != '/savedPost'" class="material-icons-outlined">shopping_cart</span> -->
+     
+      <!-- <i class="fa-regular fa-cart-shopping"></i> -->
+    </button>
+    <button *ngIf="currrntUser.role=='vender'" matBadge="{{order}}"(click)=" openVenderOrder()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+     
+      <img [src]="(nav.url == '/showVenderOrders')?'../../../assets/images/kitchen_fill.png':'../../../assets/images/kitchen.png'" height="25" alt="">
+     
+     
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <div  class="name" style="margin-left: 10px;">
+      <ngx-avatar name="{{this.currrntUser?.name}}" src="{{imageUrl}}" size="40"></ngx-avatar>
+      <span class="name" style="font-size: 18px; font-weight:600;" >{{this.currrntUser?.name}}</span>
+    </div>
+    </button>
+
+
+         
+    <mat-menu #menu="matMenu" style="overflow: hidden !important;"   yPosition="below" >
+      
+    
+      <button mat-menu-item (click)="openDialog()">
+       
+        <img src="../../../assets/images/profile.png" height="16px" width="19px" ><span> Edit Profile</span>
+      </button>
+      <button mat-menu-item (click)="openSavedPost()" >
+        <img src="../../../assets/images/bookmark.png" height="15px" width="19px" >
+        <span  >View Saved Post</span>
+      </button>
+      <button mat-menu-item (click)="openDialogChangePassword()" >
+        <img src="../../../assets/images/password.png" height="16px" width="19px" >
+        <span  >Change password</span>
+      </button>
+      <button mat-menu-item (click)="clear()">
+        <img src="../../../assets/images/logout.png" height="16px" width="19px" >
+
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  

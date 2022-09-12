@@ -1,0 +1,77 @@
+<div class="component" *ngIf="dataSource.filteredData.length">
+
+  <h1>Cart Details</h1>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> No. </th>
+    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element._id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Image </th>
+    <td mat-cell *matCellDef="let element" style="text-align: center;"> <img *ngIf="element.photo[0].path" src={{element.photo[0].path}} height="100" width="100" alt=""> </td>
+    
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Name </th>
+    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Description </th>
+    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.description.substring(0,50)}} </td>
+  </ng-container>
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Price Per Product</th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.price}}</td>
+        </ng-container>
+          <!-- Quentity Column -->
+    <ng-container matColumnDef="sub">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"></th>
+          <td mat-cell *matCellDef="let element" style="text-align: center; justify-content: center;"><ng-container *ngIf="element.quantity"> <mat-icon  *ngIf="element.quantity!='Total Amount(₹)' " (click)="sub(element)" style="color: rgb(255, 81, 0);   font-size: 25px;">remove_circle</mat-icon></ng-container></td>
+        </ng-container>
+        <ng-container matColumnDef="quentity">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Qty</th>
+          <td mat-cell *matCellDef="let element" style="text-align: center; justify-content: center;"> {{element.quantity}}</td>
+        </ng-container>
+        <ng-container matColumnDef="add">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"></th>
+          
+          <td mat-cell *matCellDef="let element" style="text-align: center; justify-content: center;"> <mat-icon  *ngIf="element.quantity!='Total Amount(₹)'" (click)="add(element)" style="color: rgb(0, 110, 255);    font-size: 25px;">add_circle</mat-icon></td>
+        </ng-container>
+         <!-- Quentity Column -->
+    <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Total Amount(₹)</th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.total}}/-</td>
+        </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="buttons">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Delete </th>       
+       <td mat-cell *matCellDef="let element" style="text-align: center;">
+        <button *ngIf="element.quantity=='Total Amount(₹)'" mat-raised-button color="primary" (click)="proceed()">Proceed</button>  
+        <mat-icon *ngIf="element.quantity!='Total Amount(₹)'" (click)="delete(element)" style="color: red;   font-size: 25px;">delete</mat-icon>
+       </td>
+                  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ 
+</table>
+
+</div>
+
+          <!-- <input type="text" placeholder="fgsfg"> -->
+          
+      
+          
+
+          <img *ngIf="!dataSource.filteredData.length" src="../../assets/images/CartEmpty.png" width="550" height="500" style="margin: 10% 0 0 35%"/>

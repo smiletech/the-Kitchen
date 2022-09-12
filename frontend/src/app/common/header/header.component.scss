@@ -1,0 +1,59 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .nav{
+    //  position: absolute;
+    z-index: 99;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+      padding: 1% 20% 1% 15%;
+      // background-color: rgb(224, 222, 222);
+      border-bottom: 2px solid rgb(224, 222, 222);
+  }
+  .name{
+    font-size: 17px;
+    display: flex;
+  }
+  button{
+    margin: 0 0.4%;
+   
+
+  }
+  img{
+    padding-right: 5px;
+  }
+  span{
+    padding-left: 5px;
+  }
+  .example-space{
+    width: 40%;
+  }
+  .custom-dialog-container .mat-dialog-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    }
+  .mat-menu{
+    overflow:hidden !important;
+    min-width: 500px !important;
+    height: auto;
+   
+    
+  }
+ 
+  @media only screen and (max-width: 1300px) {
+    
+    .nav{padding: 0 4%;}
+    .example-space{
+      max-width: auto;
+    }
+       
+  }
+
+  @media only screen and (max-width: 850px) {
+    .nav{padding: 0 5%;}
+    .example-space{
+      max-width: 34%;
+    }
+       
+  }

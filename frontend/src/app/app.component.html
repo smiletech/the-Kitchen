@@ -1,0 +1,4 @@
+<router-outlet></router-outlet>
+<ng-container *ngIf="router.url != '/forgotPassword' && router.url != '/login' &&  !router.url.includes('reset-password') &&  !router.url.includes('verify-email') && router.url != '/signup' && router.url != '/signup-vender' ">
+          <app-header></app-header>
+</ng-container>

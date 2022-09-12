@@ -1,0 +1,87 @@
+<!-- <swiper [navigation]="true" class="mySwiper">
+          <ng-template swiperSlide>Slide 1</ng-template
+          ><ng-template swiperSlide>Slide 2</ng-template
+          ><ng-template swiperSlide>Slide 3</ng-template
+          ><ng-template swiperSlide>Slide 4</ng-template
+          ><ng-template swiperSlide>Slide 5</ng-template
+          ><ng-template swiperSlide>Slide 6</ng-template
+          ><ng-template swiperSlide>Slide 7</ng-template
+          ><ng-template swiperSlide>Slide 8</ng-template
+          ><ng-template swiperSlide>Slide 9</ng-template>
+        </swiper> -->
+
+
+        <div class="flex">
+
+
+          <div class="container" >
+        
+            <carousel  mat-card-image style="z-index: 0 !important; margin: 0.001px !important;" *ngIf="feed.photo.length!=1"
+            [images]="feed.photo"
+            [objectFit]="'cover'"
+            [cellWidth]="'100%'"
+            [height]="620"
+            [width]="580"
+            [autoplay]="true"
+            [dots]="false"
+            [loop]="true"
+            [counter]="true"
+            [cellsToShow]="1">
+          </carousel>
+             <img class="images"  src={{feed.photo[0].path}} height="600" 
+              width="560" alt=""> 
+            <!-- <img class="images" *ngIf="!(feed.photo.length)" src={{imageUrl}} height="600" width="560" alt=""> -->
+            <!-- <button *ngIf="temp!=feed.photo.length-1" class="btnRight" (click)="inc()"><img src="../../assets/images/next.png"
+                style="max-height: 12px; max-width: 12px;" alt=""></button>
+            <button *ngIf="temp!=0" class="btnLeft" (click)="dec()"><img src="../../assets/images/back.png"
+                style="max-height: 12px; max-width: 12px;" alt=""></button> -->
+            <!-- <button  [disabled]= "!feed.photo.length" class="material-icons round"  style="color: red;" (click)="del()">delete</button>  -->
+          </div>
+          <mat-card class="example-card">
+        
+        
+        
+            <div class="flex" style="padding:5px 0 5px 0 ;">
+            
+              <img  src="../../assets/photo-1487819162750-4a48cfbf83b0.jpg"  height="50px" width="50px" size="45">
+              <div>
+                <div style="display: flex;">
+                <h5 style="width:230px ;font-size: 16px; padding: 3px 10px 0px 0px; margin: 0 10px;  ">{{feed?._vender.shopName}}</h5>
+                <!-- <h5 style="font-size: 13px; padding: 3px 10px 0px 0px; margin: 0;">{{calculateDiff(feed?.createdAt)}}</h5> -->
+              
+              </div>
+                
+              </div>
+              
+            </div>
+            <div class="dishDetails">
+            <h2>Dish Name:<h3> {{feed.name}}   
+           <img [src]="feed.type=='veg'?'../../assets/images/veg.png':'../../assets/images/non veg.png'" height="25" width="25">
+          </h3>
+            </h2> 
+
+            <h2>Description:<h3>{{feed.description}}..</h3> </h2>
+
+            <h2>Price: <h3>₹{{feed.price}}/-</h3></h2>
+            <h2>Quentity: </h2>
+            <div style="display:flex">
+              
+             <mat-icon matTooltip="Decrement Quentity" *ngIf="qty" style=" font-size: 35px;  width: 40px;  height: 40px;" color="warn" (click)="qty=qty-1">remove_circle</mat-icon>
+              <input mat-input  type="text" style="height: 40px; width: 45px; font-size: 20px; text-align: center;" placeholder="1" name="qty" [(ngModel)]="qty">     
+             <mat-icon matTooltip="Increment Quentity" style="font-size: 35px;  width: 40px;  height: 40px; padding-left: 2px;" color="primary" (click)="qty=qty+1">add_circle</mat-icon>
+    
+            </div>
+            <button mat-raised-button color="primary"  style="margin: 2% 2% 0 2%; height: auto; width: auto; padding: 1% 3% ; margin-left: 75%;"><mat-icon style="font-size: 25px; height: auto; width: auto;">add_shopping_cart</mat-icon></button>
+
+          </div>
+        
+        
+        
+        
+             
+              
+        
+        <div class="close">
+          <img mat-button mat-dialog-close src="../../assets/images/cancel.png" />
+        
+        </div>

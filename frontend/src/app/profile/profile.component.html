@@ -1,0 +1,151 @@
+
+
+<div class="padding">
+<div class="flex" style="padding-bottom: 0; margin-bottom: 0;">
+    <h1 >Profile Update</h1>
+    <img class="close" mat-button mat-dialog-close src="../../assets/images/cancel.png"/>
+</div>
+
+
+
+<!-- <ngx-avatar name="John Doe" src="https://static.toiimg.com/thumb/msid-88185683,imgsize-37492,width-800,height-600,resizemode-75/88185683.jpg" size="35"></ngx-avatar> 
+https://static.toiimg.com/thumb/msid-88185683,imgsize-37492,width-800,height-600,resizemode-75/88185683.jpg
+https://as2.ftcdn.net/v2/jpg/03/40/12/49/1000_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg
+-->
+<img src="{{imageUrl}}"  height="120" width="120" alt="">
+<form [formGroup]="post">
+  <mat-card class="example-card">
+   
+ 
+ 
+          <mat-card-content>
+            <mat-form-field appearance="outline" style="width:100%">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="name" required>
+                <mat-error *ngIf="post.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" style="width:100%">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error *ngIf="post.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline" style="width:100%">
+                <mat-label>Biodata</mat-label>
+
+                <input matInput placeholder="pat@example.com" formControlName="bio" required>
+
+                <mat-error *ngIf="post.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" style="width:100%">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="pat@example.com" formControlName="address" required></textarea>
+                <mat-error *ngIf="post.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <!-- <mat-form-field appearance="fill">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field> -->
+            
+              <label id="example-radio-group-label" style="margin-top: 0;">Gender *</label>
+              <br>
+              <mat-radio-group formControlName="gender" aria-label="Select an option" class="radio" required>
+                <mat-radio-button   value="1">Male </mat-radio-button>
+                <mat-radio-button value="2">Female</mat-radio-button> 
+                <mat-radio-button value="3">Other</mat-radio-button>                
+
+            </mat-radio-group>
+       
+            <!-- <mat-error *ngIf="gender.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>  -->
+
+<br>
+            <label style="width:100%; margin: 10px 0;" id="example-radio-group-label"> Date of Birth</label>
+
+            <mat-form-field appearance="outline" style="width:50%">
+                <mat-label>MM/DD/YYYY</mat-label>
+                <input matInput [matDatepicker]="picker" [formControl]="da" required>
+               
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="post.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error> 
+
+              </mat-form-field>
+              
+         
+              
+              <!-- <label id="example-radio-group-label">Enter Phone No</label>    -->
+              
+<!--               
+    <mat-form-field appearance="outline" style="width:100%">
+        
+        <ngx-mat-intl-tel-input
+       [enableAutoCountrySelect]="true"
+		[enablePlaceholder]="true"
+		[searchCountryFlag]="true"
+		[searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+		[selectFirstCountry]="true"
+		[selectedCountryISO]="CountryISO.India"
+		[maxLength]="15"
+		[phoneValidation]="true"name="phone"  #phone >
+      </ngx-mat-intl-tel-input>
+      <mat-hint>eg : +91-9874563210</mat-hint>
+      </mat-form-field>-->
+      <br>
+      <label id="example-radio-group-label" style="margin: 10px 0;">Enter Contact Number*</label>
+   <br>
+      <ngx-intl-tel-input 
+		
+		
+		[enableAutoCountrySelect]="true"
+		[enablePlaceholder]="true"
+		[searchCountryFlag]="true"
+		[searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+		[selectFirstCountry]="true"
+		[selectedCountryISO]="CountryISO.India"
+		[maxLength]="15"
+		[phoneValidation]="true"
+		style="width: 100% !important;"
+		formControlName="mobile"
+		
+	></ngx-intl-tel-input>
+
+     
+  <input type="file" (change)="fileUpload($event)" value="" style="display: none" #file>
+
+
+                  <button mat-flat-button color="primary" (click)="submitform()">Save User </button>
+            
+            
+              
+              
+    </mat-card-content>
+  
+  </mat-card>
+</form>
+
+</div>
+  <span class='material-icons' mat-icon-button [matMenuTriggerFor]="menu">add_a_photo</span>
+
+<!-- <div mat-dialog-content>
+    </div>
+<div mat-dialog-actions>
+   
+</div> -->
+
+<mat-menu #menu="matMenu"   yPosition="below" >
+    <button mat-menu-item style="padding: 0 5px;" (click)="file.click()">
+        <!-- <span type="file" name="i">Add Profile Image</span> -->
+      Add Profile Image
+    </button>
+    <button mat-menu-item style="padding:  0  5px;">
+    
+        Remove Profile Image
+    </button>
+   
+  </mat-menu>

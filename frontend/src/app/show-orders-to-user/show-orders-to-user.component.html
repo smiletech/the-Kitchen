@@ -1,0 +1,85 @@
+<h1>Order Details</h1>
+<div class="mat-elevation-z8">
+
+          <div style="display: flex;  width: 100%;">
+                    <mat-form-field style="margin-left:2%;" appearance="standard">
+                              <mat-label>Filter</mat-label>
+                              <input matInput (keyup)="applyFilter($event)" placeholder="search..." #input>
+                            </mat-form-field>
+                    <mat-paginator style="margin-left:45%;" [pageSizeOptions]="[5, 10, 20]"
+                                   showFirstLastButtons 
+                                   aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                    </div>
+          <table mat-table [dataSource]="dataSource">
+         
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> Id </th>
+              <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="transactionId">
+              <th mat-header-cell *matHeaderCellDef> Transaction Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.razorpay_payment_id}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef> Address </th>
+              <td mat-cell *matCellDef="let element"> 
+                {{element.address}} 
+
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dishs">
+              <th mat-header-cell *matHeaderCellDef  style="text-align: center;">
+           Dishs
+              </th>
+              <td mat-cell *matCellDef="let element" style="padding: 1%;"> 
+                <ng-container>
+                  <table>
+                    <tr>
+                      
+                      <th >Product Name</th>
+                      <th> Price</th>
+                      <th> Qty</th>
+                      <th> Total</th>
+                      </tr>
+                  <ng-container *ngFor="let dish of element.dishs">
+                <tr> 
+                  <td>
+                    <!-- <img style="border-radius: 20px;"  src={{dish.photo[0].path}} height="40" width="40" alt="">  -->
+                  {{dish.name}} </td>
+                   <td>{{dish.price}} </td>
+                   <td  >{{dish.quantity}} </td>
+                   <td>{{dish.total}} </td>
+                                  </tr>
+                </ng-container>
+              </table>
+              </ng-container>
+                
+              </td>
+            </ng-container>
+              
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="finalTotal">
+              <th mat-header-cell *matHeaderCellDef> Final Total </th>
+              <td mat-cell *matCellDef="let element"> {{element.finalTotal}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+       
+        </div>
+        

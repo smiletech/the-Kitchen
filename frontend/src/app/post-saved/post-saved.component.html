@@ -1,0 +1,31 @@
+<p>post-saved works!</p>
+<div class="container">
+<mat-grid-list cols="3" rowHeight="1:1"  >
+          
+          <mat-grid-tile *ngFor="let feed of feeds; index as i; "  >                
+      
+ <!-- <img   *ngIf="feed._productId.photo.length==1" (click)="openDialog(feed)" mat-card-image src={{imgUrl}}{{feed._productId.photo[0]?.filename}} alt="Photo of a Shiba Inu"> -->
+ 
+
+<div class="img" >
+          <carousel (click)="openDialog(feed)"  style="z-index: 0 !important; "
+          [images]="feed._productId.photo"
+          [transitionDuration]="1000"
+          [objectFit]="'cover'"
+          [cellWidth]="'100%'"
+          [height]="300"
+          [width]="300"
+          [autoplay]="true"
+          [dots]="false"
+          [arrows]="false"
+          [loop]="true"
+          [counter]="true"
+          [cellsToShow]="1">
+          </carousel>
+         </div>
+                    
+        
+          </mat-grid-tile>
+ 
+          </mat-grid-list>
+</div>

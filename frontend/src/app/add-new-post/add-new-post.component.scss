@@ -1,0 +1,236 @@
+.uploadDiv {
+    height: 600px;
+    width: 650px;
+
+
+}
+
+
+.flex {
+
+    display: flex;
+}
+
+a {
+    margin-left: 26% !important;
+}
+
+h3 {
+    margin-top: 10px !important;
+    margin-left: 90% !important;
+    color: rgb(0, 145, 255) !important;
+
+
+}
+
+.file {
+    position: absolute;
+    top: 29%;
+    left: 35%;
+    opacity: 0;
+    background-color: red;
+    padding: 8rem;
+    height: 6rem;
+}
+.close{  
+    background-color: white;
+
+
+}
+img {
+    padding: 0%;
+    border-radius: 0%;
+}
+
+.carousel-slide-content[_ngcontent-ued-c144] {
+    min-height: 600px;
+    position: absolute;
+    min-width: 100%;
+    z-index: 1;
+}
+
+.example-card {
+    padding-left: 1%;
+
+
+
+
+    max-width: 450px;
+
+
+}
+
+mat-form-field {}
+
+mat-card-header {
+    text-align: center;
+    display: block;
+}
+
+.save {
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.round {
+    color: rgb(37, 97, 250);
+    border: none;
+    border-radius: 50%;
+    margin: 0% 12% 2% 12%;
+    width: 50px;
+    height: 50px;
+
+
+
+}
+
+.radio {
+    display: flex;
+    margin: 0;
+}
+
+mat-radio-button {
+    padding: 0 5%;
+    color: rgb(93, 93, 93);
+}
+
+label {
+    color: rgb(93, 93, 93);
+    padding: 0;
+}
+
+mat-card {
+    min-width: 400px;
+    margin: 0;
+    padding: 0;
+
+}
+
+mat-menu {
+    width: auto;
+    height: auto;
+
+
+
+}
+
+.custom-dialog-container .mat-dialog-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.container {
+    padding: 0;
+}
+
+.container .btnRight {
+    position: absolute;
+    top: 49%;
+    left: 53%;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgb(245, 243, 243);
+    color: rgb(32, 32, 32);
+
+    padding: 12px 12px 12px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+
+}
+
+.container .btnLeft {
+    position: absolute;
+    top: 49%;
+    left: 22%;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgb(245, 243, 243);
+    color: rgb(32, 32, 32);
+
+    padding: 12px 16px 12px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.container .btnimg {
+    position: absolute;
+    top: 88%;
+    left: 52.6%;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: transparent;
+    background-color: transparent;
+
+
+
+    border: none;
+    cursor: pointer;
+
+}
+
+.container .btncar {
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    font-weight: bold;
+    padding: 1% 1%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: transparent;
+    background-color: rgba(0,0, 0,0.5);
+   
+    border-radius: 3%;
+
+    border: none;
+    cursor: pointer;
+
+}
+
+
+.container .btncar .next{
+    position: absolute;
+    top: 40%;
+    left: 94%;
+    background-color: rgb(66, 66, 66);
+    border-radius: 60%;
+    
+    cursor: pointer;
+
+}
+.container .btncar .prev{
+    position: absolute;
+    top: 40%;
+    left: 2%;
+    background-color: rgb(66, 66, 66);
+    border-radius: 60%;
+    cursor: pointer;
+
+}
+
+
+
+.images {
+
+    top: 75%;
+    left: 157%;
+    font-weight: bold;
+
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgb(245, 243, 243);
+    color: rgb(32, 32, 32);
+    font-size: 35px;
+
+    border: none;
+    cursor: pointer;
+
+}
+::ng-deep .mat-form-field-underline {
+    display: none;
+  }

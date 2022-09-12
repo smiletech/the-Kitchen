@@ -1,0 +1,17 @@
+
+            <div class="center" style="text-align: center; justify-content: center; padding: 8%; width: 600px;">
+             <form class="example-form" >
+                   
+                  
+                    <mat-form-field class="example-full-width" appearance="outline" style="width:100%">
+                      <mat-label>Enter Address</mat-label>
+                      <textarea  [(ngModel)]="emojiCaption" name="emojiCaption" rows="8" matInput placeholder="Ex. It makes me feel..."></textarea>
+                    </mat-form-field>
+          </form>
+          <button  mat-raised-button color="primary" (click)="addAddress()" >Proceed</button>     
+    
+</div>
+        <div class="close">
+          <img mat-button mat-dialog-close src="../../assets/images/cancel.png" />
+        
+        </div>

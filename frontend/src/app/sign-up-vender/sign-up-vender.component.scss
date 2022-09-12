@@ -1,0 +1,64 @@
+*{
+          overflow: hidden;
+          
+           
+        
+        }
+        .container{
+          background-image: linear-gradient(rgb(250, 248, 248),rgb(248, 248, 248));
+        }
+        .example-card {
+          margin-top: 8%;
+            margin-left: 33%;   
+            
+           
+            max-width: 465px;
+           
+            margin-bottom:10px;
+          }
+          mat-form-field{
+            margin: 5px 6px;
+          }
+          mat-card-header{
+            text-align: center;
+             display: block;
+             font-size: 35px;
+          }
+         
+        
+          .loginBtn{
+            background-color: #1890FF ;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 430px;
+            padding: 5px 0;
+            margin-bottom: 10px;
+          }
+          span{
+            font-size: 15px;
+            margin-top: 10% !important;
+            margin-left:70% !important;
+          }
+          p{
+            font-size: 15px;
+            margin-top: 50px;
+          }
+          .center{
+            margin-top: 5%;
+            font-size: 16px;
+            margin-left: 46%;
+            justify-content: center;
+          }
+          .google{
+            cursor: pointer;
+            margin: 10% 30% ;
+            padding-bottom: 8%;
+          
+          }
+          .googeAnker{
+            font-size: 15px;
+            padding: 10px;
+            color: rgb(115, 115, 117);
+          }

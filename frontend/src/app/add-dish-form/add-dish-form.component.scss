@@ -1,0 +1,91 @@
+*{
+    font-size: 16px;
+}
+
+      .flex{
+         
+          display: flex;
+          padding-bottom: 2px;
+      }
+      a{
+          margin-left:22% !important;
+      }
+      h1{
+          margin-left:43% !important;
+      
+         
+      }
+      
+      img{
+         
+         
+      }
+      
+      .close{
+          border-radius:0;
+          padding-top: 1%;
+          margin-left:40% !important;
+          width: 20px;
+          height: 30px;
+      }
+        .example-card {
+       
+           
+            
+           
+            max-width: 600px;
+           
+        
+          }
+          .mat-form-field{
+              line-height: 1;
+          }
+          mat-card-header{
+            text-align: center;
+             display: block;
+          }
+       
+          button{
+            
+            width: auto;
+            padding: 2%;
+          }
+          span{
+              position: fixed;
+              padding: 6px;
+              color: rgb(123, 206, 254);
+              background-color: rgb(255, 255, 255);
+              border: 1px solid rgb(224, 223, 223);
+              border-radius: 20px;
+              top: 18%;
+              left:50%
+          
+          }
+          .radio{
+              display: flex;
+              margin: 0;
+          }
+          mat-radio-button{
+              padding: 0 5%;
+              color:  rgb(93, 93, 93);
+          }
+          label{
+              color: rgb(93, 93, 93);
+             padding: 0;
+          }
+            
+          mat-card{
+              margin: 0;
+              padding: 0;
+              
+          }
+          mat-menu{
+              width: auto;
+              height: auto;
+              
+              
+           
+            }
+            .mat-form-field-appearance-outline .mat-form-field-wrapper {
+              margin: 0 0; 
+          }

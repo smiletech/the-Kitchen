@@ -1,0 +1,71 @@
+.container{
+  padding: 0% 5% 0 5%;
+
+}
+
+.example-card       {
+  max-width: 350px !important;
+ margin: 0 1%;
+  padding: 2%;
+}
+
+.img{
+  height: 90%;
+width: 90%;
+
+
+}      
+    .row{
+      display: flex;
+    }   
+    p{
+      margin: 0;
+    }
+    mat-button-toggle {
+      border: 2px solid #f28628;
+      border-radius: 4px;
+      margin: 1px 3px;
+      
+      width: auto;
+      height: auto;     
+      font-size: 14px;
+      font-style: bold;
+  }
+  
+  .mat-button-toggle-disabled {
+      border: 1px solid #c5c0c7;
+      background-color: #e1dde5;
+  }
+  
+  div.center-text {
+      margin-left: -8px;
+      margin-top: -3px;
+  }
+  .mat-button-toggle-checked {
+    border: 1px solid #f28628;
+    background-color:  #f28628; 
+ }
+ .mat-grid-tile-content {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.venderBtn{
+ 
+  align-items: center;
+  padding: 20px;
+  font-size: 35px;
+  font-weight: bold;
+  border-radius: 20px;
+  
+
+
+}

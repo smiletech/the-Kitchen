@@ -1,0 +1,99 @@
+
+
+<div class="padding">
+          <div class="flex" style="padding-bottom: 0; margin-bottom: 0;">
+              <h1 >{{head}}</h1>
+              <img class="close" mat-button mat-dialog-close src="../../assets/images/cancel.png"/>
+          </div>
+          
+          
+          
+          <!-- <ngx-avatar name="John Doe" src="https://static.toiimg.com/thumb/msid-88185683,imgsize-37492,width-800,height-600,resizemode-75/88185683.jpg" size="35"></ngx-avatar> 
+          https://static.toiimg.com/thumb/msid-88185683,imgsize-37492,width-800,height-600,resizemode-75/88185683.jpg
+          https://as2.ftcdn.net/v2/jpg/03/40/12/49/1000_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg
+          -->
+        <div style="display: flex">
+          <img src="{{imageUrl}}"  height="540" width="500" alt="">
+          <form [formGroup]="post">
+            <mat-card class="example-card" style="padding-left: 10px;">
+             
+           
+                    <!-- (click)="file.click()" -->
+                    <mat-card-content>
+                      <mat-form-field appearance="outline" style="width:100%;">
+                          <mat-label>Name</mat-label>
+                          <input matInput placeholder="pat@example.com" formControlName="name" required>
+                          <mat-error *ngIf="post.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                        <input style="margin-bottom: 10px;" type="file" (change)="fileUpload($event)" value=""  #file>
+                        <br>
+                       
+                             
+                    
+                        <mat-form-field appearance="outline" style="width:100%">
+                          <mat-label>Price</mat-label>
+                          <input type="number" matInput placeholder="pat@example.com" formControlName="price" required>
+                          <mat-error *ngIf="post.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                       
+                        
+                        
+                       
+                      
+                        <label id="example-radio-group-label" style="margin-top: 0;">Type *</label>
+                        <br>
+                        <mat-radio-group formControlName="type" aria-label="Select an option" class="radio" required>
+                          <mat-radio-button   value="veg">Veg </mat-radio-button>
+                          <mat-radio-button value="non-veg">Non-Veg</mat-radio-button> 
+                                       
+          
+                      </mat-radio-group>
+                    <br>
+                      <mat-label>Avaliable: (true/false)</mat-label>
+                      <br>
+                      
+                      <mat-slide-toggle  style="margin-bottom: 10px;" formControlName="status"></mat-slide-toggle>
+                 <br>
+                      <!-- <mat-error *ngIf="gender.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>  -->
+                      <mat-form-field appearance="outline" style="width:100%">
+                        <mat-label>Description</mat-label>
+        
+                        <textarea matInput placeholder="pat@example.com" rows="5" formControlName="description" required></textarea>
+        
+                        <mat-error *ngIf="post.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                      <br>
+                   
+            
+          
+          
+                            <button [disabled]="!post.valid" mat-flat-button color="primary" style="padding: 5px 15px; margin-left: 70%; margin-bottom: 14px;" (click)="submitform()">{{head}}</button>
+                      
+                      
+                        
+                        
+              </mat-card-content>
+            
+            </mat-card>
+          </form>
+</div>
+          </div>
+            <!-- <span class='material-icons' mat-icon-button [matMenuTriggerFor]="menu">add_a_photo</span> -->
+          
+          <!-- <div mat-dialog-content>
+              </div>
+          <div mat-dialog-actions>
+             
+          </div> -->
+          
+          <mat-menu #menu="matMenu"   yPosition="below" >
+              <button mat-menu-item style="padding: 0 5px;" (click)="file.click()">
+                  <!-- <span type="file" name="i">Add Profile Image</span> -->
+                Add Profile Image
+              </button>
+              <button mat-menu-item style="padding:  0  5px;">
+              
+                  Remove Profile Image
+              </button>
+             
+            </mat-menu>

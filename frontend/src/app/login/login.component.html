@@ -1,0 +1,48 @@
+
+<div class="container">
+
+<mat-card class="example-card">
+    
+  <mat-card-header >
+    
+    <h1 >login to Social Feed</h1>
+ 
+  </mat-card-header>
+ 
+          <mat-card-content>
+<form  [formGroup]="loginForm">
+         
+              <mat-form-field appearance="outline" style="width:428px">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error *ngIf="loginForm.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" style="width:428px">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.invalid">	<mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            
+              <button class="loginBtn" type="submit" mat-flat-button  (click)="login()">SIGN IN </button>
+              
+              <span (click)="forgot()" style="cursor:pointer ; color: #1890FF ;">Forgot password ?</span>
+              
+            </form>
+
+            <button *ngIf="show" class="loginBtn" type="submit" mat-flat-button  (click)="verify()">Verify Email Now </button>
+            <p>Don’t have an account?   <a (click)="goToLogin()" style="cursor:pointer; color: #1890FF;"> Sign up </a></p>
+
+            <div class="center">
+              OR
+            </div>
+            <div class="google" (click)="signupWithGoogle()">
+              <img src="../../assets/images/google.png" height="30px" width="30px" alt="">
+              <a class="googeAnker">Sign in with Google</a>
+            </div>
+    </mat-card-content>
+  
+  </mat-card>
+</div>

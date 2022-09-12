@@ -1,0 +1,156 @@
+
+
+
+<ng-container *ngIf="currentUser?.role=='user'">
+<carousel style="z-index: 0 !important; margin-top: 4%;" class="carousel-html-content" [objectFit]="'cover'"
+  [cellWidth]="'100%'" [height]="650" [autoplay]="true" [dots]="true" [loop]="true" [counter]="false" [cellsToShow]="1">
+  <div class="carousel-cell"
+    style="background-image: url(../../../assets/images/banner.png);   filter: grayscale(70%); text-align: center; padding-top: 80px;">
+    <h1 style="color: white; font-size: 120px;">Food Nation</h1>
+  </div>
+  <div class="carousel-cell"
+    style="background-image: url(../../../assets/images/banner1.jpg);   filter: grayscale(70%); padding: .8%;">
+    <h1 style="color: white; font-size: 140px;">Burger</h1>
+  </div>
+  <div class="carousel-cell"
+    style="background-image: url(../../../assets/images/banner2.jpg);   filter: grayscale(70%); padding: 1.5%;">
+    <h1 style="color: white; font-size: 140px;">Pizza</h1>
+  </div>
+  <div class="carousel-cell"
+    style="background-image: url(../../../assets/images/banner3.jpg);   filter: grayscale(70%); padding: 1.5%;">
+    <h1 style="color: white; font-size: 140px;">Fries</h1>
+  </div>
+  <div class="carousel-cell"
+    style="background-image: url(../../../assets/images/bannerKitchen2.png);   filter: grayscale(70%); padding: 1.5%;">
+    <h1 style="color: white; font-size: 140px;">Crispy</h1>
+  </div>
+  <div class="carousel-cell"
+    style="background-image: url(../../../assets/images/bannerKitchen.png);   filter: grayscale(70%); padding: 1.5%;">
+    <h1 style="color: white; font-size: 140px;">Pasta</h1>
+  </div>
+</carousel>
+
+ <div class="container" #order id="order">
+  
+
+
+    <div class="row">
+     <h1 style="margin-top: 6%;">Order Now</h1>
+    
+  
+ 
+  <mat-button-toggle-group  (change)="filter($event)"  name="fontStyle" style="border: none;"  >
+    <mat-button-toggle   value="" checked=true>All</mat-button-toggle>
+    <mat-button-toggle   value="veg">Veg</mat-button-toggle>
+    <mat-button-toggle  value="non-veg">Non-Veg</mat-button-toggle>
+  
+  </mat-button-toggle-group>
+
+     <ng-container *ngFor="let dish of dishs; index as i">
+      
+     <mat-card class="example-card">
+  
+       <img mat-card-image
+         src={{dish.photo[0]?.path}}
+         alt="Photo of a Shiba Inu">
+       <mat-card-content>
+         <h2>
+           {{dish.name}}
+           <img [src]="dish.type=='veg'?'../../assets/images/veg.png':'../../assets/images/non veg.png'" height="20" width="20">
+          
+         </h2>
+         <p>
+           {{dish.description.substring(0,100)}}...
+          </p>
+          <h3>₹{{dish.price}}/-</h3>
+         
+         
+       </mat-card-content>
+  
+       <button mat-raised-button color="warn" (click)="openDialog(dish)"><mat-icon>remove_red_eye</mat-icon></button>
+       <button mat-raised-button color="primary" (click)="addToCart(dish)" style="margin-left: 55%;"><mat-icon>add_shopping_cart</mat-icon></button>
+     </mat-card>
+  
+    
+    
+   </ng-container>
+  </div>
+
+
+</div>
+
+</ng-container>
+
+
+<!-- vendor -->
+
+<ng-container *ngIf="currentUser?.role=='vender'">
+  <h1 style="margin: 5% 0 0 8%;">Order Status</h1>
+  <div style="margin:0% 8% 0 8% " >
+  <mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile><div> <button (click)="orderStatus('completed')"  class="venderBtn" mat-raised-button style="background-color: rgb(114, 241, 131);">{{completed}} <img   src="../../../assets/images/done.svg" height="40" alt=""> </button> <br><br> <span style="font-size: 16px !important;"> Completed Orders</span></div></mat-grid-tile>
+    <mat-grid-tile><div> <button  (click)="orderStatus('cooking')" class="venderBtn" mat-raised-button style="background-color: rgb(241, 103, 168);">{{cooking}} <img   src="../../../assets/images/cook.svg" height="40" alt=""></button><br> <br> <span style="font-size: 16px !important;"> Cooking Orders</span></div></mat-grid-tile>
+    <mat-grid-tile><div> <button  (click)="orderStatus('pending')" class="venderBtn" mat-raised-button  style="background-color: rgb(113, 168, 240);">{{pending}} <img   src="../../../assets/images/pending.svg" height="40" alt=""></button><br> <br> <span style="font-size: 16px !important;"> Pending Orders</span></div></mat-grid-tile>
+    <mat-grid-tile><div> <button   (click)="orderStatus('cancelled')" class="venderBtn" mat-raised-button style="background-color: rgb(241, 81, 70);" >{{cancelled}} <img   src="../../../assets/images/cancel.svg" height="40" alt=""></button><br><br> <span style="font-size: 16px !important;"> Cancelled Orders</span></div></mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div    style="text-align: right; align-items: center !important; justify-content: center; max-width: 80%; margin: 0 0 0 12%; display: overflow;" >
+<!-- <div class="flex" style="width:600px !important; height: 200px !important;">
+  <div class="flex-item">
+    <div style="display: block;">
+    <canvas baseChart 
+                [data]="lineChartData"
+                [options]="lineChartOptions"
+                [type]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+  <div class="flex-item">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th *ngFor="let label of lineChartData.labels">{{label}}</th>
+      </tr>
+      <tr *ngFor="let d of lineChartData.datasets; let i=index" [class]="'line-'+i">
+        <td *ngFor="let label of lineChartData.labels; let j=index">{{d && d.data[j]}}</td>
+      </tr>
+    </table>
+    <div class="button-row">
+      <button mat-button mat-raised-button color="primary" (click)="randomize()">Randomize</button>
+      <button mat-button mat-raised-button color="primary" (click)="pushOne()">Push</button>
+      <button mat-button mat-raised-button color="primary" (click)="changeColor()">Recolor</button>
+      <button mat-button mat-raised-button color="primary" (click)="hideOne()">Toggle Series B</button>
+      <button mat-button mat-raised-button color="primary" (click)="changeLabel()">Change Label</button>
+    </div>
+  </div>
+
+</div> -->
+<!-- <a href="#" disabled>rambhau</a> -->
+<div style="max-height: 100px;">
+    <div style="width:90% !important; ">
+      <div >
+        <button mat-button mat-raised-button  (click)="randomize()"><img   [src]="(barChartType=='bar')?'../../../assets/images/line.svg':'../../../assets/images/bar.svg'" height="30" alt=""> </button>
+      <div style="display: block">
+        <canvas baseChart [data]="barChartData" [options]="barChartOptions"
+          [type]="barChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+<!-- <div style="width:800px !important; height: 200px !important; margin-top:35%">
+  <div>
+    <div style="display: block">
+      <canvas baseChart
+        [data]="doughnutChartData"
+
+        [type]="doughnutChartType">
+      </canvas>
+    </div>
+  </div>
+</div> -->
+
+</div>
+</ng-container>
